@@ -1,0 +1,30 @@
+{
+  "name": "{{ name }}",
+  "description": "{{ description }}",
+  "version": "1.0.0",
+  "author": "{{ author }}",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "dependencies": {
+    "vue": "^2.3.3",
+    "vue-router": "^2.7.0"
+  },
+  "devDependencies": {
+    "coffee-loader": "^0.7.3",
+    "coffee-script": "^1.12.7",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "pug": "^2.0.0-rc.2",
+    "pug-loader": "^2.3.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-loader": "^12.1.0",
+    "vue-template-compiler": "^2.3.3",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
