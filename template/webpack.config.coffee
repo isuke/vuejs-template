@@ -11,20 +11,60 @@ module.exports =
     rules: [
       {
         test: /\.vue$/
-        loader: 'vue-loader'
-        options:
-          loaders:
-            js: 'coffee-loader'
-            css: 'css-loader!stylus-loader'
+        use:
+          loader: 'vue-loader'
+          options:
+            loaders:
+              coffee: ['coffee-loader']
+              stylus: [
+                {
+                  loader: 'style-loader'
+                  options: sourceMap: true
+                }
+                {
+                  loader: 'css-loader'
+                  options: sourceMap: true
+                }
+                {
+                  loader: 'stylus-loader'
+                  options: sourceMap: true
+                }
+              ]
       }
       {
         test: /\.(png|jpg|gif|svg)$/
-        loader: 'file-loader'
-        options: name: '[name].[ext]?[hash]'
+        use: [
+          {
+            loader: 'file-loader'
+            options:
+              name: '[name].[ext]?[hash]'
+          }
+        ]
       }
       {
         test: /\.coffee$/
-        loader: 'coffee-loader'
+        use: [
+          {
+            loader: 'coffee-loader'
+          }
+        ]
+      }
+      {
+        test: /\.styl$/
+        use: [
+          {
+            loader: 'style-loader'
+            options: sourceMap: true
+          }
+          {
+            loader: 'css-loader'
+            options: sourceMap: true
+          }
+          {
+            loader: 'stylus-loader'
+            options: sourceMap: true
+          }
+        ]
       }
     ]
   resolve:
@@ -44,10 +84,16 @@ module.exports =
 if process.env.NODE_ENV == 'production'
   module.exports.devtool = '#source-map'
   # http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins or []).concat([
-    new (webpack.DefinePlugin)('process.env': NODE_ENV: '"production"')
-    new (webpack.optimize.UglifyJsPlugin)(
+  module.exports.plugins = (module.exports.plugins || []).concat [
+    new webpack.DefinePlugin
+      'process.env':
+        NODE_ENV: "production"
+  ,
+    new webpack.optimize.UglifyJsPlugin
       sourceMap: true
-      compress: warnings: false)
-    new (webpack.LoaderOptionsPlugin)(minimize: true)
-  ])
+      compress:
+        warnings: false
+  ,
+    new webpack.LoaderOptionsPlugin
+      minimize: true
+  ]
