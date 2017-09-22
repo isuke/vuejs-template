@@ -15,7 +15,7 @@ module.exports =
           loader: 'vue-loader'
           options:
             loaders:
-              coffee: ['coffee-loader']
+              coffee: ['babel-loader', 'coffee-loader']
               stylus: [
                 {
                   loader: 'style-loader'
@@ -44,6 +44,9 @@ module.exports =
       {
         test: /\.coffee$/
         use: [
+          {
+            loader: 'babel-loader'
+          }
           {
             loader: 'coffee-loader'
           }
