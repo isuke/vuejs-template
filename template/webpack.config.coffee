@@ -26,6 +26,10 @@ module.exports =
                   options: sourceMap: true
                 }
                 {
+                  loader: 'postcss-loader'
+                  options: sourceMap: true
+                }
+                {
                   loader: 'stylus-loader'
                   options: sourceMap: true
                 }
@@ -61,6 +65,10 @@ module.exports =
           }
           {
             loader: 'css-loader'
+            options: sourceMap: true
+          }
+          {
+            loader: 'postcss-loader'
             options: sourceMap: true
           }
           {
