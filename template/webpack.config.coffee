@@ -33,6 +33,14 @@ module.exports =
                   loader: 'stylus-loader'
                   options: sourceMap: true
                 }
+                {
+                  loader: 'stylus-resources-loader'
+                  options:
+                    resources: [
+                      path.resolve(__dirname, './src/styles/_variables.styl')
+                      path.resolve(__dirname, './src/styles/_mixins.styl')
+                    ]
+                }
               ]
       }
       {
