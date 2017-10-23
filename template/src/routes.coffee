@@ -2,11 +2,11 @@ module.exports = [
   {
     path: '/'
     name: 'top'
-    component: require('./pages/Top.vue')
+    component: require('@pages/Top.vue')
   },
   {
     path: '/bye'
     name: 'bye'
-    component: require('./pages/Bye.vue')
+    component: require('@pages/Bye.vue')
   }
 ]
