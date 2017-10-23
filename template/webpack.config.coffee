@@ -1,5 +1,6 @@
 path = require('path')
 webpack = require('webpack')
+merge = require('webpack-merge')
 
 loader = {}
 loader.coffee = ['babel-loader', 'coffee-loader']
@@ -18,7 +19,7 @@ loader.stylus = [
   }
 ]
 
-module.exports =
+baseConfig =
   entry: './src/main.js'
   output:
     path: path.resolve(__dirname, './dist')
@@ -57,30 +58,34 @@ module.exports =
   resolve:
     alias:
       'vue$': 'vue/dist/vue.esm.js'
-  devServer:
-    historyApiFallback: true
-    noInfo: true
-  performance:
-    hints: false
-  devtool: '#eval-source-map'
   plugins: [
     new webpack.ProvidePlugin
       axios: 'axios'
   ]
 
 if process.env.NODE_ENV == 'production'
-  module.exports.devtool = '#source-map'
-  # http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat [
-    new webpack.DefinePlugin
-      'process.env':
-        NODE_ENV: "production"
-  ,
-    new webpack.optimize.UglifyJsPlugin
-      sourceMap: true
-      compress:
-        warnings: false
-  ,
-    new webpack.LoaderOptionsPlugin
-      minimize: true
-  ]
+  config = merge baseConfig,
+    devtool: '#source-map'
+    plugins: [
+      new webpack.DefinePlugin
+        'process.env':
+          NODE_ENV: '"production"'
+    ,
+      new webpack.optimize.UglifyJsPlugin
+        sourceMap: true
+        compress:
+          warnings: false
+    ,
+      new webpack.LoaderOptionsPlugin
+        minimize: true
+    ]
+else
+  config = merge baseConfig,
+    devtool: '#eval-source-map'
+    devServer:
+      historyApiFallback: true
+      noInfo: true
+    performance:
+      hints: false
+
+module.exports = config
