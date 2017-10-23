@@ -1,6 +1,23 @@
 path = require('path')
 webpack = require('webpack')
 
+loader = {}
+loader.coffee = ['babel-loader', 'coffee-loader']
+loader.stylus = [
+  { loader: 'style-loader'  , options: sourceMap: true }
+  { loader: 'css-loader'    , options: sourceMap: true }
+  { loader: 'postcss-loader', options: sourceMap: true }
+  { loader: 'stylus-loader' , options: sourceMap: true }
+  {
+    loader: 'stylus-resources-loader'
+    options:
+      resources: [
+        path.resolve(__dirname, './src/styles/_variables.styl')
+        path.resolve(__dirname, './src/styles/_mixins.styl')
+      ]
+  }
+]
+
 module.exports =
   entry: './src/main.js'
   output:
@@ -15,33 +32,8 @@ module.exports =
           loader: 'vue-loader'
           options:
             loaders:
-              coffee: ['babel-loader', 'coffee-loader']
-              stylus: [
-                {
-                  loader: 'style-loader'
-                  options: sourceMap: true
-                }
-                {
-                  loader: 'css-loader'
-                  options: sourceMap: true
-                }
-                {
-                  loader: 'postcss-loader'
-                  options: sourceMap: true
-                }
-                {
-                  loader: 'stylus-loader'
-                  options: sourceMap: true
-                }
-                {
-                  loader: 'stylus-resources-loader'
-                  options:
-                    resources: [
-                      path.resolve(__dirname, './src/styles/_variables.styl')
-                      path.resolve(__dirname, './src/styles/_mixins.styl')
-                    ]
-                }
-              ]
+              coffee: loader.coffee
+              stylus: loader.stylus
       }
       {
         test: /\.(png|jpg|gif|svg)$/
@@ -55,35 +47,11 @@ module.exports =
       }
       {
         test: /\.coffee$/
-        use: [
-          {
-            loader: 'babel-loader'
-          }
-          {
-            loader: 'coffee-loader'
-          }
-        ]
+        use: loader.coffee
       }
       {
         test: /\.styl$/
-        use: [
-          {
-            loader: 'style-loader'
-            options: sourceMap: true
-          }
-          {
-            loader: 'css-loader'
-            options: sourceMap: true
-          }
-          {
-            loader: 'postcss-loader'
-            options: sourceMap: true
-          }
-          {
-            loader: 'stylus-loader'
-            options: sourceMap: true
-          }
-        ]
+        use: loader.stylus
       }
     ]
   resolve:
