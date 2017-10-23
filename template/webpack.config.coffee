@@ -65,7 +65,8 @@ baseConfig =
       'vue$': 'vue/dist/vue.esm.js'
   plugins: [
     new webpack.ProvidePlugin
-      axios: 'axios'
+      '_': 'lodash'
+      'axios': 'axios'
   ]
 
 if process.env.NODE_ENV == 'production'
