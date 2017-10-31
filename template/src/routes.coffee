@@ -1,12 +1,15 @@
-module.exports = [
+import top from '@pages/Top.vue'
+import bye from '@pages/Bye.vue'
+
+export default = [
   {
     path: '/'
     name: 'top'
-    component: require('@pages/Top.vue')
+    component: top
   },
   {
     path: '/bye'
     name: 'bye'
-    component: require('@pages/Bye.vue')
+    component: bye
   }
 ]
