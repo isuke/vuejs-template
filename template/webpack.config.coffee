@@ -73,6 +73,10 @@ baseConfig =
       '@styles':     path.resolve(__dirname, 'src', 'styles')
       'vue$': 'vue/dist/vue.esm.js'
   plugins: [
+    new webpack.DefinePlugin
+      'process.env':
+        NODE_ENV: "'#{process.env.NODE_ENV}'"
+  ,
     new webpack.ProvidePlugin
       '_': 'lodash'
       'axios': 'axios'
@@ -82,10 +86,6 @@ if process.env.NODE_ENV == 'production'
   config = merge baseConfig,
     devtool: '#source-map'
     plugins: [
-      new webpack.DefinePlugin
-        'process.env':
-          NODE_ENV: '"production"'
-    ,
       new webpack.optimize.UglifyJsPlugin
         sourceMap: true
         compress:
