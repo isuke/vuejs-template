@@ -10,7 +10,7 @@ This is a project template for [vue-cli](https://github.com/vuejs/vue-cli).
 
 ``` bash
 $ yarn global add vue-cli
-$ vue init isuke/vuejs-template#v0.8.0 my-project
+$ vue init isuke/vuejs-template#v0.9.0 my-project
 $ cd my-project
 $ yarn install
 $ yarn run dev
