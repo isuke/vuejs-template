@@ -1,7 +1,7 @@
 import top from '@pages/Top.vue'
 import bye from '@pages/Bye.vue'
 
-export default = [
+export default [
   {
     path: '/'
     name: 'top'

@@ -4,6 +4,11 @@ merge = require('webpack-merge')
 
 loader = {}
 loader.coffee = ['babel-loader', 'coffee-loader']
+loader.css    = [
+  { loader: 'css-loader'    , options: sourceMap: true }
+  { loader: 'postcss-loader', options: sourceMap: true }
+  { loader: 'stylus-loader' , options: sourceMap: true }
+]
 loader.stylus = [
   { loader: 'style-loader'  , options: sourceMap: true }
   { loader: 'css-loader'    , options: sourceMap: true }
@@ -49,6 +54,10 @@ baseConfig =
       {
         test: /\.coffee$/
         use: loader.coffee
+      }
+      {
+        test: /\.css$/
+        use: loader.css
       }
       {
         test: /\.styl$/

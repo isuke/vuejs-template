@@ -5,7 +5,7 @@
 </template>
 
 <script lang="coffee">
-export default =
+export default
   data: ->
     msg: 'Bye'
 </script>
