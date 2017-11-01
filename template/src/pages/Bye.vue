@@ -10,7 +10,7 @@ export default
     msg: 'Bye'
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .bye
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
