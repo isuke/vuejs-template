@@ -1,6 +1,8 @@
 path = require('path')
 webpack = require('webpack')
 merge = require('webpack-merge')
+HtmlWebpackPlugin = require('html-webpack-plugin')
+CleanWebpackPlugin = require('clean-webpack-plugin')
 
 loader = {}
 loader.coffee = ['babel-loader', 'coffee-loader']
@@ -28,8 +30,7 @@ baseConfig =
   entry: './src/main.js'
   output:
     path: path.resolve(__dirname, './dist')
-    publicPath: '/dist/'
-    filename: 'build.js'
+    publicPath: ''
   module:
     rules: [
       {
@@ -73,6 +74,8 @@ baseConfig =
       '@styles':     path.resolve(__dirname, 'src', 'styles')
       'vue$': 'vue/dist/vue.esm.js'
   plugins: [
+    new HtmlWebpackPlugin
+      template: path.resolve(__dirname, 'src', 'index_template.html')
     new webpack.DefinePlugin
       'process.env':
         NODE_ENV: "'#{process.env.NODE_ENV}'"
@@ -84,8 +87,11 @@ baseConfig =
 
 if process.env.NODE_ENV == 'production'
   config = merge baseConfig,
+    output:
+      filename: 'build-[hash].js'
     devtool: '#source-map'
     plugins: [
+      new CleanWebpackPlugin(['dist'])
       new webpack.optimize.UglifyJsPlugin
         sourceMap: true
         compress:
@@ -96,8 +102,11 @@ if process.env.NODE_ENV == 'production'
     ]
 else
   config = merge baseConfig,
+    output:
+      filename: 'build.js'
     devtool: '#eval-source-map'
     devServer:
+      contentBase: 'dist'
       historyApiFallback: true
       noInfo: true
     performance:
