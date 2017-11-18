@@ -68,6 +68,7 @@ baseConfig =
   resolve:
     alias:
       '@src':        path.resolve(__dirname, 'src')
+      '@scripts':    path.resolve(__dirname, 'src', 'scripts')
       '@components': path.resolve(__dirname, 'src', 'components')
       '@pages':      path.resolve(__dirname, 'src', 'pages')
       '@assets':     path.resolve(__dirname, 'src', 'assets')
