@@ -80,7 +80,6 @@ baseConfig =
     new webpack.DefinePlugin
       'process.env':
         NODE_ENV: "'#{process.env.NODE_ENV}'"
-  ,
     new webpack.ProvidePlugin
       'Vue': 'vue'
       '_': 'lodash'
@@ -98,7 +97,6 @@ if process.env.NODE_ENV == 'production'
         sourceMap: true
         compress:
           warnings: false
-    ,
       new webpack.LoaderOptionsPlugin
         minimize: true
     ]
