@@ -1,5 +1,5 @@
 // Font Family
-default-font-family = -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI","Noto Sans Japanese","ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+default-font-family = -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Noto Sans Japanese", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
 
 // Font Sizes
 /*
@@ -24,18 +24,27 @@ small-font-size       = base-font-size * 0.75
 extra-small-font-size = base-font-size * 0.56
 
 // Line height
-base-line-height = 1.5
-heading-line-height = 1.2
+base-line-height-num = 1.5
+base-line-height = base-line-height-num * 1px
+bold-line-height = base-line-height-num * 1.5px
 
 // Other Sizes
 base-border-radius = 3px
-base-spacing = base-line-height * 1em
+base-spacing = base-line-height-num * 1em
 large-spacing = base-spacing * 3
 small-spacing = base-spacing / 3
 base-z-index = 0
 
 // Colors
-light-gray  = #eeeeee
-white       = #ffffff
-theme-color = #0094aa
-default-font-color = rgba(0, 0, 0, 0.87)
+black       = #040404
+white       = #f6f6f6
+light-gray  = #e0e0e0
+dark-gray   = #808080
+red         = #C7243A
+blue        = #3261AB
+green       = #009250
+yellow      = #FFE600
+orange      = #EDAD0B
+theme-color = #45A1CF
+default-bg-color = white
+default-font-color = black
