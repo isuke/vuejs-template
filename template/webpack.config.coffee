@@ -3,6 +3,7 @@ webpack = require('webpack')
 merge = require('webpack-merge')
 HtmlWebpackPlugin = require('html-webpack-plugin')
 CleanWebpackPlugin = require('clean-webpack-plugin')
+FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 loader = {}
 loader.coffee = ['babel-loader', 'coffee-loader']
@@ -111,5 +112,8 @@ else
       noInfo: true
     performance:
       hints: false
+    plugins: [
+      new FriendlyErrorsWebpackPlugin()
+    ]
 
 module.exports = config
