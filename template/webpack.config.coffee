@@ -6,6 +6,12 @@ CleanWebpackPlugin = require('clean-webpack-plugin')
 FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 loader = {}
+loader.coffeePre = {
+  loader: 'coffeelint-loader'
+  options:
+    failOnErrors: true
+    failOnWarns: false
+}
 loader.coffee = ['babel-loader', 'coffee-loader']
 loader.css    = [
   { loader: 'style-loader'  , options: sourceMap: true }
@@ -42,6 +48,8 @@ baseConfig =
             loaders:
               coffee: loader.coffee
               stylus: loader.stylus
+            preLoaders:
+              coffee: 'coffeelint-loader'
       }
       {
         test: /\.(png|jpg|gif|svg)$/
@@ -52,6 +60,12 @@ baseConfig =
               name: '[name].[ext]?[hash]'
           }
         ]
+      }
+      {
+        enforce: 'pre'
+        test: /\.coffee$/
+        exclude: /node_modules/
+        use: loader.coffeePre
       }
       {
         test: /\.coffee$/
