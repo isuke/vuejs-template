@@ -1,3 +1,4 @@
+fs = require('fs')
 path = require('path')
 webpack = require('webpack')
 merge = require('webpack-merge')
@@ -50,6 +51,14 @@ baseConfig =
               stylus: loader.stylus
             preLoaders:
               coffee: 'coffeelint-loader'
+      }
+      {
+        test: /\.vue$/
+        enforce: "pre"
+        exclude: /node_modules/
+        use:
+          loader: "vue-pug-lint-loader"
+          options: JSON.parse(fs.readFileSync(path.resolve(__dirname, '.pug-lintrc')))
       }
       {
         test: /\.(png|jpg|gif|svg)$/
