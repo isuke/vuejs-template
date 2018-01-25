@@ -7,12 +7,20 @@ CleanWebpackPlugin = require('clean-webpack-plugin')
 FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 loader = {}
-loader.coffeePre = {
-  loader: 'coffeelint-loader'
-  options:
-    failOnErrors: true
-    failOnWarns: false
-}
+loader.vuePre = [
+  {
+    loader: 'vue-pug-lint-loader'
+    options: JSON.parse(fs.readFileSync(path.resolve(__dirname, '.pug-lintrc')))
+  }
+]
+loader.coffeePre = [
+  {
+    loader: 'coffeelint-loader'
+    options:
+      failOnErrors: true
+      failOnWarns: false
+  }
+]
 loader.coffee = ['babel-loader', 'coffee-loader']
 loader.css    = [
   { loader: 'style-loader'  , options: sourceMap: true }
@@ -56,9 +64,7 @@ baseConfig =
         test: /\.vue$/
         enforce: "pre"
         exclude: /node_modules/
-        use:
-          loader: "vue-pug-lint-loader"
-          options: JSON.parse(fs.readFileSync(path.resolve(__dirname, '.pug-lintrc')))
+        use: loader.vuePre
       }
       {
         test: /\.(png|jpg|gif|svg)$/
