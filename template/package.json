@@ -42,6 +42,7 @@
     "stylus-loader": "^3.0.1",
     "stylus-resources-loader": "^0.0.4",
     "vue-loader": "^13.7.0",
+    "vue-pug-lint-loader": "^0.0.1",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.11.1",
