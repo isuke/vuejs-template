@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "lint:template": "pug-lint-vue src"
+    "lint": "yarn run lint:template && yarn run lint:coffee",
+    "lint:template": "pug-lint-vue src",
+    "lint:coffee": "coffeelint src"
   },
   "dependencies": {
     "axios": "^0.17.1",
