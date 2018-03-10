@@ -13,6 +13,7 @@ loader.vuePre = [
     options: JSON.parse(fs.readFileSync(path.resolve(__dirname, '.pug-lintrc')))
   }
 ]
+loader.js = ['babel-loader']
 loader.coffeePre = [
   {
     loader: 'coffeelint-loader'
@@ -75,6 +76,10 @@ baseConfig =
               name: '[name]-[hash].[ext]'
           }
         ]
+      }
+      {
+        test: /\.js$/
+        use: loader.js
       }
       {
         enforce: 'pre'
