@@ -1,0 +1,29 @@
+:chapter-label:
+:icons: font
+:lang: en
+:sectanchors:
+:sectnums:
+:sectnumlevels: 3
+:source-highlighter: highlightjs
+:toc:
+:toclevels: 1
+
+:author: {{ author }}
+:email: {{ email }}
+
+= {{ name }}
+
+{{ description }}
+
+== Build Setup
+
+----
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:8080
+$ yarn run dev
+
+# build for production with minification
+$ yarn run build
+----

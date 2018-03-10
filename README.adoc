@@ -1,0 +1,46 @@
+:chapter-label:
+:icons: font
+:lang: en
+:sectanchors:
+:sectnums:
+:sectnumlevels: 3
+:source-highlighter: highlightjs
+:toc:
+:toclevels: 1
+
+:author: isuke
+:email: isuke770@gmail.com
+
+= vue.js template
+
+A simple Vue 2.0 Webpack & `vue-loader` setup for quick prototyping. Note this template is not suitable for production - for that you may want to wait for an official 2.0 webpack template.
+
+This template is Vue 2.0 compatible. For Vue 1.x use this command: `vue init isuke/vuejs-template#v1.0.2 my-project`
+
+== Usage
+
+This is a project template for https://github.com/vuejs/vue-cli[vue-cli].
+
+----
+$ yarn global add vue-cli
+$ vue init isuke/vuejs-template#v1.0.2 my-project
+$ cd my-project
+$ yarn install
+$ yarn run dev
+----
+
+== What's Included
+
+* `yarn run dev`: Webpack + `vue-loader` with proper config for source maps & hot-reload.
+
+* `yarn run build`: build with HTML/CSS/JS minification.
+
+For detailed explanation on how things work, consult the http://vuejs.github.io/vue-loader[docs for vue-loader]. Also check out the https://github.com/vuejs/vue-loader/releases/tag/v9.0.0[breaking changes in vue-loader@9.0.0].
+
+== Fork It And Make Your Own
+
+You can fork this repo to create your own boilerplate, and use it with `vue-cli`:
+
+----
+vue init username/repo my-project
+----
