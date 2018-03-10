@@ -7,7 +7,7 @@ import VueRouter from 'vue-router';
 //
 // Styles
 //
-import 'sanitize.css';
+import 'tinyreset/tinyreset.css';
 import '@styles/_bases.styl';
 
 //
