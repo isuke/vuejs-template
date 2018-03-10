@@ -14,6 +14,11 @@
     "author": {
       "type": "string",
       "label": "Author"
+    },
+    "license": {
+      "type": "string",
+      "label": "License",
+      "default": "MIT"
     }
   },
   "completeMessage": "{{#inPlace}}To get started:\n\n  yarn install\n  yarn run dev.{{else}}To get started:\n\n  cd {{destDirName}}\n  yarn install\n  yarn run dev.{{/inPlace}}"
