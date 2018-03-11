@@ -7,6 +7,10 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    {{#if unitTest}}
+    "test:unit": "cross-env NODE_ENV=test mocha-webpack --webpack-config webpack.config.js --require spec/unit/setup.js spec/unit/**/*.spec.coffee",
+    "test": "yarn run test:unit",
+    {{/if}}
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "lint:template": "pug-lint-vue src",
     "lint": "yarn run lint:template"
@@ -27,6 +31,13 @@
     "coffeescript": "latest",
     "cross-env": "latest",
     "css-loader": "latest",
+    {{#if unitTest}}
+    "expect": "latest",
+    "jsdom": "latest",
+    "jsdom-global": "latest",
+    "mocha": "latest",
+    "mocha-webpack": "latest",
+    {{/if}}
     "file-loader": "latest",
     "friendly-errors-webpack-plugin": "latest",
     "html-webpack-plugin": "latest",
@@ -54,9 +65,17 @@
     "vue-loader": "latest",
     "vue-pug-lint-loader": "latest",
     "vue-template-compiler": "latest",
+    {{#if unitTest}}
+    "vue-test-utils": "latest",
+    {{/if}}
     "webpack": "3.x.x",
     "webpack-cli": "2.x.x",
     "webpack-dev-server": "2.x.x",
+    {{#if unitTest}}
+    "webpack-merge": "latest",
+    "webpack-node-externals": "latest"
+    {{else}}
     "webpack-merge": "latest"
+    {{/if}}
   }
 }
