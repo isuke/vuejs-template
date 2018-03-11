@@ -52,6 +52,12 @@ baseConfig =
     rules: [
       {
         test: /\.vue$/
+        enforce: "pre"
+        exclude: /node_modules/
+        use: loader.vuePre
+      }
+      {
+        test: /\.vue$/
         use:
           loader: 'vue-loader'
           options:
@@ -60,12 +66,6 @@ baseConfig =
               stylus: loader.stylus
             preLoaders:
               coffee: 'coffeelint-loader'
-      }
-      {
-        test: /\.vue$/
-        enforce: "pre"
-        exclude: /node_modules/
-        use: loader.vuePre
       }
       {
         test: /\.(png|jpg|gif|svg)$/
