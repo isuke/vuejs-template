@@ -15,7 +15,7 @@
 
 A simple Vue 2.0 Webpack & `vue-loader` setup for quick prototyping. Note this template is not suitable for production - for that you may want to wait for an official 2.0 webpack template.
 
-This template is Vue 2.0 compatible. For Vue 1.x use this command: `vue init isuke/vuejs-template#v1.0.2 my-project`
+This template is Vue 2.0 compatible. For Vue 1.x use this command: `vue init isuke/vuejs-template#v1.0.3 my-project`
 
 == Usage
 
@@ -23,7 +23,7 @@ This is a project template for https://github.com/vuejs/vue-cli[vue-cli].
 
 ----
 $ yarn global add vue-cli
-$ vue init isuke/vuejs-template#v1.0.2 my-project
+$ vue init isuke/vuejs-template#v1.0.3 my-project
 $ cd my-project
 $ yarn install
 $ yarn run dev
