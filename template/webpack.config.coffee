@@ -14,14 +14,6 @@ loader.vuePre = [
   }
 ]
 loader.js = ['babel-loader']
-loader.coffeePre = [
-  {
-    loader: 'coffeelint-loader'
-    options:
-      failOnErrors: true
-      failOnWarns: false
-  }
-]
 loader.coffee = ['babel-loader', 'coffee-loader']
 loader.css    = [
   { loader: 'style-loader'  , options: sourceMap: true }
@@ -64,8 +56,6 @@ baseConfig =
             loaders:
               coffee: loader.coffee
               stylus: loader.stylus
-            preLoaders:
-              coffee: 'coffeelint-loader'
       }
       {
         test: /\.(png|jpg|gif|svg)$/
@@ -80,12 +70,6 @@ baseConfig =
       {
         test: /\.js$/
         use: loader.js
-      }
-      {
-        enforce: 'pre'
-        test: /\.coffee$/
-        exclude: /node_modules/
-        use: loader.coffeePre
       }
       {
         test: /\.coffee$/
