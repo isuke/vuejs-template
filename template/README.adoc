@@ -8,9 +8,6 @@
 :toc:
 :toclevels: 1
 
-:author: {{ author }}
-:email: {{ email }}
-
 = {{ name }}
 
 {{ description }}

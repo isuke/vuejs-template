@@ -15,15 +15,24 @@
       "type": "string",
       "label": "Author"
     },
-    "email": {
-      "type": "string",
-      "label": "Email"
-    },
     "license": {
       "type": "string",
       "label": "License",
       "default": "MIT"
+    },
+    "altCss": {
+      "type": "list",
+      "label": "Use alt css",
+      "default": "scss",
+      "choices": [
+        "scss",
+        "stylus"
+      ]
     }
+  },
+  "filters": {
+    "src/styles/**/*.scss": "altCss == 'scss'",
+    "src/styles/**/*.styl": "altCss == 'stylus'"
   },
   "completeMessage": "{{#inPlace}}To get started:\n\n  yarn install\n  yarn run dev.{{else}}To get started:\n\n  cd {{destDirName}}\n  yarn install\n  yarn run dev.{{/inPlace}}"
 }

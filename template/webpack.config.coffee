@@ -20,10 +20,27 @@ loader.css    = [
   { loader: 'css-loader'    , options: sourceMap: true }
   { loader: 'postcss-loader', options: sourceMap: true }
 ]
+{{#if_eq altCss "scss"}}
+loader.scss = [
+{{/if_eq}}
+{{#if_eq altCss "stylus"}}
 loader.stylus = [
+{{/if_eq}}
   { loader: 'style-loader'  , options: sourceMap: true }
   { loader: 'css-loader'    , options: sourceMap: true }
   { loader: 'postcss-loader', options: sourceMap: true }
+{{#if_eq altCss "scss"}}
+  { loader: 'sass-loader'   , options: sourceMap: true }
+  {
+    loader: 'sass-resources-loader'
+    options:
+      resources: [
+        path.resolve(__dirname, './src/styles/_variables.scss')
+        path.resolve(__dirname, './src/styles/_mixins.scss')
+      ]
+  }
+{{/if_eq}}
+{{#if_eq altCss "stylus"}}
   { loader: 'stylus-loader' , options: sourceMap: true }
   {
     loader: 'stylus-resources-loader'
@@ -33,6 +50,7 @@ loader.stylus = [
         path.resolve(__dirname, './src/styles/_mixins.styl')
       ]
   }
+{{/if_eq}}
 ]
 
 baseConfig =
@@ -55,7 +73,12 @@ baseConfig =
           options:
             loaders:
               coffee: loader.coffee
+              {{#if_eq altCss "scss"}}
+              scss: loader.scss
+              {{/if_eq}}
+              {{#if_eq altCss "stylus"}}
               stylus: loader.stylus
+              {{/if_eq}}
       }
       {
         test: /\.(png|jpg|gif|svg)$/
@@ -79,10 +102,18 @@ baseConfig =
         test: /\.css$/
         use: loader.css
       }
+      {{#if_eq altCss "scss"}}
+      {
+        test: /\.scss$/
+        use: loader.scss
+      }
+      {{/if_eq}}
+      {{#if_eq altCss "stylus"}}
       {
         test: /\.styl$/
         use: loader.stylus
       }
+      {{/if_eq}}
     ]
   resolve:
     alias:

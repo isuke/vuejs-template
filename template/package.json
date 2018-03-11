@@ -2,7 +2,7 @@
   "name": "{{ name }}",
   "description": "{{ description }}",
   "version": "0.0.1",
-  "author": "{{ author }} <{{ email }}>",
+  "author": "{{ author }}",
   "license": "{{ license }}",
   "private": true,
   "scripts": {
@@ -30,16 +30,26 @@
     "file-loader": "latest",
     "friendly-errors-webpack-plugin": "latest",
     "html-webpack-plugin": "latest",
+    {{#if_eq altCss "scss"}}
+    "import-glob-loader": "latest",
+    "node-sass": "latest",
+    {{/if_eq}}
     "postcss": "latest",
     "postcss-loader": "latest",
     "pug": "latest",
     "pug-lint": "latest",
     "pug-lint-vue": "latest",
     "pug-loader": "latest",
+    {{#if_eq altCss "scss"}}
+    "sass-loader": "latest",
+    "sass-resources-loader": "latest",
+    {{/if_eq}}
     "style-loader": "latest",
+    {{#if_eq altCss "stylus"}}
     "stylus": "latest",
     "stylus-loader": "latest",
     "stylus-resources-loader": "latest",
+    {{/if_eq}}
     "tinyreset": "latest",
     "vue-loader": "latest",
     "vue-pug-lint-loader": "latest",

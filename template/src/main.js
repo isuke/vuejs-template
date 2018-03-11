@@ -8,7 +8,12 @@ import VueRouter from 'vue-router';
 // Styles
 //
 import 'tinyreset/tinyreset.css';
+{{#if_eq altCss "scss"}}
+import '@styles/_bases.scss';
+{{/if_eq}}
+{{#if_eq altCss "stylus"}}
 import '@styles/_bases.styl';
+{{/if_eq}}
 
 //
 // Settings
