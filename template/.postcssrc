@@ -1,5 +1,13 @@
 {
   "plugins": {
-    "autoprefixer": {}
+    "autoprefixer": {
+      "grid": true,
+      "browsers": [
+        "last 2 versions",
+        "IE >= 10",
+        "Android >= 5",
+        "last 2 ios version"
+      ]
+    }
   }
 }
