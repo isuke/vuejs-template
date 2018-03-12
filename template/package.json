@@ -22,6 +22,9 @@
     "vue-router": "3.x.x"
   },
   "devDependencies": {
+    {{#if unitTest}}
+    "@vue/test-utils": "latest",
+    {{/if}}
     "autoprefixer": "latest",
     "babel-core": "latest",
     "babel-loader": "latest",
@@ -66,9 +69,6 @@
     "vue-loader": "latest",
     "vue-pug-lint-loader": "latest",
     "vue-template-compiler": "latest",
-    {{#if unitTest}}
-    "vue-test-utils": "latest",
-    {{/if}}
     "webpack": "3.x.x",
     "webpack-cli": "2.x.x",
     "webpack-dev-server": "2.x.x",
