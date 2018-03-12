@@ -18,8 +18,8 @@
   "dependencies": {
     "axios": "latest",
     "lodash": "latest",
-    "vue": "latest",
-    "vue-router": "latest"
+    "vue": "2.x.x",
+    "vue-router": "3.x.x"
   },
   "devDependencies": {
     "autoprefixer": "latest",
