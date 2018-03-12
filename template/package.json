@@ -46,6 +46,7 @@
     "node-sass": "latest",
     {{/if_eq}}
     "postcss": "latest",
+    "postcss-flexbugs-fixes": "latest",
     "postcss-loader": "latest",
     "pug": "latest",
     "pug-lint": "latest",
