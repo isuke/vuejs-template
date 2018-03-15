@@ -34,6 +34,7 @@ loader.stylus = [
   { loader: 'postcss-loader', options: sourceMap: true }
 {{#if_eq altCss "scss"}}
   { loader: 'sass-loader'   , options: sourceMap: true }
+  { loader: 'import-glob-loader', options: sourceMap: true }
   {
     loader: 'sass-resources-loader'
     options:
