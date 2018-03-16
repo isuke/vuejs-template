@@ -38,7 +38,7 @@
   "filters": {
     "src/styles/**/*.scss": "altCss == 'scss'",
     "src/styles/**/*.styl": "altCss == 'stylus'",
-    "spec/unit": "unitTest == true"
+    "spec/unit": "unitTest"
   },
   "completeMessage": "{{#inPlace}}To get started:\n\n  yarn install\n  yarn run dev.{{else}}To get started:\n\n  cd {{destDirName}}\n  yarn install\n  yarn run dev{{/inPlace}}"
 }
