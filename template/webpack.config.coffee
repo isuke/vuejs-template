@@ -97,6 +97,7 @@ baseConfig =
       {
         test: /\.js$/
         use: loader.js
+        exclude: /node_modules/
       }
       {
         test: /\.coffee$/
