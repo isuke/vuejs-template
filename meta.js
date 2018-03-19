@@ -20,6 +20,12 @@ module.exports = {
       label: 'License',
       default: 'MIT'
     },
+    postCss: {
+      type: 'checkbox',
+      label: 'Select which postCss libraries',
+      choices: ['autoprefixer', 'flexbugs-fixes'],
+      default: ['autoprefixer', 'flexbugs-fixes']
+    },
     altCss: {
       type: 'list',
       label: 'Use alt css',
@@ -43,6 +49,11 @@ module.exports = {
     },
     'if_and': function(val1, val2, opts) {
       if (val1 && val2) {
+        return opts.fn(this)
+      }
+    },
+    'includes': function(list, val, opts) {
+      if (list[val]) {
         return opts.fn(this)
       }
     }

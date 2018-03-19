@@ -1,6 +1,9 @@
 {
   "plugins": {
-    "postcss-flexbugs-fixes": true,
+    {{#includes postCss "flexbugs-fixes"}}
+    "postcss-flexbugs-fixes": true{{#includes postCss "autoprefixer"}},{{/includes}}
+    {{/includes}}
+    {{#includes postCss "autoprefixer"}}
     "autoprefixer": {
       "grid": true,
       "browsers": [
@@ -10,5 +13,6 @@
         "last 2 ios version"
       ]
     }
+    {{/includes}}
   }
 }

@@ -25,7 +25,9 @@
     {{#unitTest}}
     "@vue/test-utils": "latest",
     {{/unitTest}}
+    {{#includes postCss "autoprefixer"}}
     "autoprefixer": "latest",
+    {{/includes}}
     "babel-core": "latest",
     "babel-loader": "latest",
     "babel-preset-env": "latest",
@@ -49,7 +51,9 @@
     "node-sass": "latest",
     {{/if_eq}}
     "postcss": "6.x.x",
+    {{#includes postCss "flexbugs-fixes"}}
     "postcss-flexbugs-fixes": "latest",
+    {{/includes}}
     "postcss-loader": "latest",
     "pug": "latest",
     "pug-lint": "latest",
