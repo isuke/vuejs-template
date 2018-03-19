@@ -5,9 +5,9 @@ merge = require('webpack-merge')
 HtmlWebpackPlugin = require('html-webpack-plugin')
 CleanWebpackPlugin = require('clean-webpack-plugin')
 FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-{{#if unitTest}}
+{{#unitTest}}
 nodeExternals = require('webpack-node-externals')
-{{/if}}
+{{/unitTest}}
 
 loader = {}
 loader.vuePre = [
@@ -169,12 +169,12 @@ else if process.env.NODE_ENV == 'development'
     plugins: [
       new FriendlyErrorsWebpackPlugin()
     ]
-{{#if unitTest}}
+{{#unitTest}}
 else if process.env.NODE_ENV == 'test'
   config = merge baseConfig,
     externals: [nodeExternals()]
     devtool: 'inline-cheap-module-source-map'
-{{/if}}
+{{/unitTest}}
 else
   console.error "`#{process.env.NODE_ENV}` is not defined."
 

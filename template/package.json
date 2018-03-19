@@ -7,10 +7,10 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    {{#if unitTest}}
+    {{#unitTest}}
     "test:unit": "cross-env NODE_ENV=test mocha-webpack --webpack-config=webpack.config.js --require=spec/unit/setup.js spec/unit/**/*.spec.coffee",
     "test": "yarn run test:unit",
-    {{/if}}
+    {{/unitTest}}
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "lint:template": "pug-lint-vue src",
     "lint": "yarn run lint:template"
@@ -22,9 +22,9 @@
     "vue-router": "3.x.x"
   },
   "devDependencies": {
-    {{#if unitTest}}
+    {{#unitTest}}
     "@vue/test-utils": "latest",
-    {{/if}}
+    {{/unitTest}}
     "autoprefixer": "latest",
     "babel-core": "latest",
     "babel-loader": "latest",
@@ -34,13 +34,13 @@
     "coffeescript": "latest",
     "cross-env": "latest",
     "css-loader": "latest",
-    {{#if unitTest}}
+    {{#unitTest}}
     "expect": "latest",
     "jsdom": "latest",
     "jsdom-global": "latest",
     "mocha": "latest",
     "mocha-webpack": "latest",
-    {{/if}}
+    {{/unitTest}}
     "file-loader": "latest",
     "friendly-errors-webpack-plugin": "latest",
     "html-webpack-plugin": "latest",
@@ -68,17 +68,15 @@
     "tinyreset": "latest",
     "vue-loader": "latest",
     "vue-pug-lint-loader": "latest",
-    {{#if unitTest}}
+    {{#unitTest}}
     "vue-server-renderer": "2.x.x",
-    {{/if}}
+    {{/unitTest}}
     "vue-template-compiler": "latest",
     "webpack": "3.x.x",
     "webpack-dev-server": "2.x.x",
-    {{#if unitTest}}
-    "webpack-merge": "latest",
+    "webpack-merge": "latest"{{#unitTest}},{{/unitTest}}
+    {{#unitTest}}
     "webpack-node-externals": "latest"
-    {{else}}
-    "webpack-merge": "latest"
-    {{/if}}
+    {{/unitTest}}
   }
 }
