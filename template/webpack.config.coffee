@@ -5,6 +5,7 @@ merge = require('webpack-merge')
 HtmlWebpackPlugin = require('html-webpack-plugin')
 CleanWebpackPlugin = require('clean-webpack-plugin')
 FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+VueLoaderPlugin             = require('vue-loader/lib/plugin')
 {{#unitTest}}
 nodeExternals = require('webpack-node-externals')
 {{/unitTest}}
@@ -16,6 +17,7 @@ loader.vuePre = [
     options: JSON.parse(fs.readFileSync(path.resolve(__dirname, '.pug-lintrc')))
   }
 ]
+loader.pug = ['pug-plain-loader']
 loader.js = ['babel-loader']
 loader.coffee = ['babel-loader', 'coffee-loader']
 loader.css    = [
@@ -29,11 +31,11 @@ loader.scss = [
 {{#if_eq altCss "stylus"}}
 loader.stylus = [
 {{/if_eq}}
-  { loader: 'style-loader'  , options: sourceMap: true }
-  { loader: 'css-loader'    , options: sourceMap: true }
-  { loader: 'postcss-loader', options: sourceMap: true }
+  { loader: 'vue-style-loader'  , options: sourceMap: true }
+  { loader: 'css-loader'        , options: sourceMap: true }
+  { loader: 'postcss-loader'    , options: sourceMap: true }
 {{#if_eq altCss "scss"}}
-  { loader: 'sass-loader'   , options: sourceMap: true }
+  { loader: 'sass-loader'       , options: sourceMap: true }
   { loader: 'import-glob-loader', options: sourceMap: true }
   {
     loader: 'sass-resources-loader'
@@ -95,6 +97,13 @@ baseConfig =
         ]
       }
       {
+        test: /\.pug$/
+        oneOf: [
+          resourceQuery: /^\?vue/
+          use: loader.pug
+        ]
+      }
+      {
         test: /\.js$/
         use: loader.js
         exclude: /node_modules/
@@ -130,6 +139,7 @@ baseConfig =
       '@styles':     path.resolve(__dirname, 'src', 'styles')
       'vue$': 'vue/dist/vue.esm.js'
   plugins: [
+    new VueLoaderPlugin
     new HtmlWebpackPlugin
       template: path.resolve(__dirname, 'src', 'index_template.html')
     new webpack.DefinePlugin

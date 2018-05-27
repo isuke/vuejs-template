@@ -38,16 +38,16 @@
     "css-loader": "latest",
     {{#unitTest}}
     "expect": "latest",
-    "jsdom": "latest",
-    "jsdom-global": "latest",
-    "mocha": "latest",
-    "mocha-webpack": "latest",
     {{/unitTest}}
     "file-loader": "latest",
     "friendly-errors-webpack-plugin": "latest",
     "html-webpack-plugin": "latest",
     {{#if_eq altCss "scss"}}
     "import-glob-loader": "latest",
+    "jsdom": "latest",
+    "jsdom-global": "latest",
+    "mocha": "latest",
+    "mocha-webpack": "latest",
     "node-sass": "latest",
     {{/if_eq}}
     "postcss": "6.x.x",
@@ -59,6 +59,7 @@
     "pug-lint": "latest",
     "pug-lint-vue": "latest",
     "pug-loader": "latest",
+    "pug-plain-loader": "latest",
     {{#if_eq altCss "scss"}}
     "sass-loader": "latest",
     "sass-resources-loader": "latest",
@@ -70,10 +71,11 @@
     "stylus-resources-loader": "latest",
     {{/if_eq}}
     "tinyreset": "latest",
-    "vue-loader": "latest",
+    "vue-loader": "15.x.x",
     "vue-pug-lint-loader": "latest",
     {{#unitTest}}
     "vue-server-renderer": "2.x.x",
+    "vue-style-loader": "latest",
     {{/unitTest}}
     "vue-template-compiler": "latest",
     "webpack": "3.x.x",
