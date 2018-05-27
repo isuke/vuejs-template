@@ -1,14 +1,14 @@
-fs = require('fs')
-path = require('path')
-webpack = require('webpack')
-merge = require('webpack-merge')
-HtmlWebpackPlugin = require('html-webpack-plugin')
-CleanWebpackPlugin = require('clean-webpack-plugin')
+CleanWebpackPlugin          = require('clean-webpack-plugin')
 FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-VueLoaderPlugin             = require('vue-loader/lib/plugin')
+fs                          = require('fs')
+HtmlWebpackPlugin           = require('html-webpack-plugin')
+merge                       = require('webpack-merge')
 {{#unitTest}}
-nodeExternals = require('webpack-node-externals')
+nodeExternals               = require('webpack-node-externals')
 {{/unitTest}}
+path                        = require('path')
+VueLoaderPlugin             = require('vue-loader/lib/plugin')
+webpack                     = require('webpack')
 
 loader = {}
 loader.vuePre = [
@@ -142,50 +142,45 @@ baseConfig =
     new VueLoaderPlugin
     new HtmlWebpackPlugin
       template: path.resolve(__dirname, 'src', 'index_template.html')
-    new webpack.DefinePlugin
-      'process.env':
-        NODE_ENV: "'#{process.env.NODE_ENV}'"
     new webpack.ProvidePlugin
       'Vue': 'vue'
       '_': 'lodash'
       'axios': 'axios'
   ]
 
-if process.env.NODE_ENV == 'production'
-  config = merge baseConfig,
-    output:
-      filename: 'build-[hash].js'
-    devtool: '#source-map'
-    plugins: [
-      new CleanWebpackPlugin(['dist'])
-      new webpack.optimize.UglifyJsPlugin
-        sourceMap: true
-        compress:
-          warnings: false
-      new webpack.LoaderOptionsPlugin
-        minimize: true
-    ]
-else if process.env.NODE_ENV == 'development'
-  config = merge baseConfig,
-    output:
-      filename: 'build.js'
-    devtool: '#eval-source-map'
-    devServer:
-      contentBase: 'dist'
-      historyApiFallback: true
-      noInfo: true
-    performance:
-      hints: false
-    plugins: [
-      new FriendlyErrorsWebpackPlugin()
-    ]
-{{#unitTest}}
-else if process.env.NODE_ENV == 'test'
-  config = merge baseConfig,
-    externals: [nodeExternals()]
-    devtool: 'inline-cheap-module-source-map'
-{{/unitTest}}
-else
-  console.error "`#{process.env.NODE_ENV}` is not defined."
+module.exports = (env, argv) =>
+  mode = if argv? then argv.mode else 'test'
 
-module.exports = config
+  if mode == 'production'
+    merge baseConfig,
+      output:
+        filename: 'build-[hash].js'
+      devtool: '#source-map'
+      plugins: [
+        new CleanWebpackPlugin(['dist'])
+        new webpack.LoaderOptionsPlugin
+          minimize: true
+      ]
+  else if mode == 'development'
+    merge baseConfig,
+      output:
+        filename: 'build.js'
+      devtool: '#eval-source-map'
+      devServer:
+        contentBase: 'dist'
+        historyApiFallback: true
+        noInfo: true
+      performance:
+        hints: false
+      plugins: [
+        new FriendlyErrorsWebpackPlugin()
+      ]
+  {{#unitTest}}
+  else if mode == 'test'
+    merge baseConfig,
+      mode: 'production'
+      externals: [nodeExternals()]
+      devtool: 'inline-cheap-module-source-map'
+  {{/unitTest}}
+  else
+    console.error "`#{mode}` is not defined."

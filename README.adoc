@@ -13,9 +13,9 @@
 
 = vue.js template
 
-A simple Vue 3.0 Webpack & `vue-loader` setup for quick prototyping. Note this template is not suitable for production - for that you may want to wait for an official 3.0 webpack template.
+A simple Vue 2.x Webpack 4.x & `vue-loader` setup for quick prototyping. Note this template is not suitable for production - for that you may want to wait for an official 4.x webpack template.
 
-This template is Vue 2.0 compatible.
+This template is Vue 2.x compatible.
 
 == Install
 
@@ -51,8 +51,9 @@ $ yarn run test
 
 == What's Included
 
-* vue.js
-* vue-router
+* webpack 4.x
+* vue.js 2.x
+* vue-router 3.x
 * lodash
 * axios
 * postCss

@@ -6,12 +6,12 @@
   "license": "{{ license }}",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+    "dev": "webpack-dev-server --mode=development --open --hot",
     {{#unitTest}}
-    "test:unit": "cross-env NODE_ENV=test mocha-webpack --webpack-config=webpack.config.js --require=spec/unit/setup.js spec/unit/**/*.spec.coffee",
+    "test:unit": "mocha-webpack --webpack-config=webpack.config.coffee --require=spec/unit/setup.js spec/unit/**/*.spec.coffee",
     "test": "yarn run test:unit",
     {{/unitTest}}
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "webpack --mode=production --progress --hide-modules",
     "lint:template": "pug-lint-vue src",
     "lint": "yarn run lint:template"
   },
@@ -34,7 +34,6 @@
     "clean-webpack-plugin": "latest",
     "coffee-loader": "latest",
     "coffeescript": "latest",
-    "cross-env": "latest",
     "css-loader": "latest",
     {{#unitTest}}
     "expect": "latest",
@@ -78,8 +77,9 @@
     "vue-style-loader": "latest",
     {{/unitTest}}
     "vue-template-compiler": "latest",
-    "webpack": "3.x.x",
-    "webpack-dev-server": "2.x.x",
+    "webpack": "4.x.x",
+    "webpack-cli": "2.x.x",
+    "webpack-dev-server": "3.x.x",
     "webpack-merge": "latest"{{#unitTest}},{{/unitTest}}
     {{#unitTest}}
     "webpack-node-externals": "latest"
