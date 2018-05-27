@@ -46,7 +46,7 @@
     "jsdom": "latest",
     "jsdom-global": "latest",
     "mocha": "latest",
-    "mocha-webpack": "latest",
+    "mocha-webpack": "2.0.0-beta.0",
     "node-sass": "latest",
     {{/if_eq}}
     "postcss": "6.x.x",
