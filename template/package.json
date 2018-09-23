@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "axios": "0.x.x",
-    "lodash": "4.x.x",
     "vue": "2.x.x",
     "vue-router": "3.x.x"
   },

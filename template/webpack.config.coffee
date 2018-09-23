@@ -144,7 +144,6 @@ baseConfig =
       template: path.resolve(__dirname, 'src', 'index_template.html')
     new webpack.ProvidePlugin
       'Vue': 'vue'
-      '_': 'lodash'
       'axios': 'axios'
   ]
 
