@@ -28,7 +28,7 @@
     "autoprefixer": "latest",
     {{/includes}}
     "babel-core": "latest",
-    "babel-loader": "latest",
+    "babel-loader": "7.x.x",
     "babel-preset-env": "latest",
     "clean-webpack-plugin": "latest",
     "coffee-loader": "latest",
