@@ -77,7 +77,7 @@
     {{/unitTest}}
     "vue-template-compiler": "latest",
     "webpack": "4.x.x",
-    "webpack-cli": "2.x.x",
+    "webpack-cli": "3.x.x",
     "webpack-dev-server": "3.x.x",
     "webpack-merge": "latest"{{#unitTest}},{{/unitTest}}
     {{#unitTest}}
