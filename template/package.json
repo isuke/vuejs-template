@@ -42,10 +42,14 @@
     "html-webpack-plugin": "latest",
     {{#if_eq altCss "scss"}}
     "import-glob-loader": "latest",
+    {{/if_eq}}
+    {{#unitTest}}
     "jsdom": "latest",
     "jsdom-global": "latest",
     "mocha": "latest",
     "mocha-webpack": "2.0.0-beta.0",
+    {{/unitTest}}
+    {{#if_eq altCss "scss"}}
     "node-sass": "latest",
     {{/if_eq}}
     "postcss": "6.x.x",
