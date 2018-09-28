@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "webpack-dev-server --mode=development --hot",
     {{#unitTest}}
-    "test:unit": "mocha-webpack --webpack-config=webpack.config.coffee --require=spec/unit/setup.js spec/unit/**/*.spec.coffee",
+    "test:unit": "mocha-webpack --webpack-config=webpack.config.coffee --require=test/unit/setup.js test/unit/**/*.test.coffee",
     "test": "yarn run test:unit",
     {{/unitTest}}
     "build": "webpack --mode=production --progress --hide-modules",
