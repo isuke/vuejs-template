@@ -21,15 +21,15 @@
     "vue-router": "3.x.x"
   },
   "devDependencies": {
+    "@babel/core": "latest",
+    "@babel/preset-env": "latest",
     {{#unitTest}}
     "@vue/test-utils": "latest",
     {{/unitTest}}
     {{#includes postCss "autoprefixer"}}
     "autoprefixer": "latest",
     {{/includes}}
-    "babel-core": "latest",
-    "babel-loader": "7.x.x",
-    "babel-preset-env": "latest",
+    "babel-loader": "latest",
     "clean-webpack-plugin": "latest",
     "coffee-loader": "latest",
     "coffeescript": "latest",
