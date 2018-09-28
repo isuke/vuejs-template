@@ -22,7 +22,7 @@ This template is Vue 2.x compatible.
 This is a project template for https://github.com/vuejs/vue-cli[vue-cli].
 
 ----
-$ yarn global add vue-cli
+$ yarn global add @vue/cli @vue/cli-init
 
 $ vue init isuke/vuejs-template my-project
 $ cd my-project
@@ -54,8 +54,9 @@ $ yarn run test
 * webpack 4.x
 * vue.js 2.x
 * vue-router 3.x
-* lodash
 * axios
+* altCss
+** coffeescript2
 * postCss
 ** autoprefixer (option)
 ** postcss-flexbugs-fixes (option)
