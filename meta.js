@@ -64,5 +64,5 @@ module.exports = {
     'spec/unit/**/*': 'unitTest',
   },
   completeMessage:
-    '{{#inPlace}}To get started:\n\n  yarn install\n  yarn run dev.{{else}}To get started:\n\n  cd {{destDirName}}\n  yarn install\n  yarn run dev{{/inPlace}}',
+    '{{#inPlace}}To get started:\n\n  yarn install\n  yarn run dev\n  open localhost:8080{{else}}To get started:\n\n  cd {{destDirName}}\n  yarn install\n  yarn run dev\n  open localhost:8080{{/inPlace}}',
 }

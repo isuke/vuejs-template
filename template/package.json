@@ -6,7 +6,7 @@
   "license": "{{ license }}",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --mode=development --open --hot",
+    "dev": "webpack-dev-server --mode=development --hot",
     {{#unitTest}}
     "test:unit": "mocha-webpack --webpack-config=webpack.config.coffee --require=spec/unit/setup.js spec/unit/**/*.spec.coffee",
     "test": "yarn run test:unit",
