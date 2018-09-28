@@ -47,7 +47,7 @@ loader.stylus = [
   }
 {{/if_eq}}
 {{#if_eq altCss "stylus"}}
-  { loader: 'stylus-loader' , options: sourceMap: true }
+  { loader: 'stylus-loader'     , options: sourceMap: true }
   {
     loader: 'stylus-resources-loader'
     options:

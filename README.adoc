@@ -61,7 +61,7 @@ $ yarn run test
 ** postcss-flexbugs-fixes (option)
 * altCss
 ** scss (select)
-** stylus (select)
+** stylus (select) : Not recommended. It has not been maintained yet.
 * unit test (option)
 ** @vue/test-utils
 ** mocha
